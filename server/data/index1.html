@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>泰会聊</title>
+</head>
+<style>
+    @media screen and (min-width: 450px) {
+        body{
+            background-image: url("static/bg.jpg");
+            background-size: 100%;
+            background-repeat:repeat;
+        }
+        .logo{
+            width: 120px;
+            height: 50px;
+        }
+        .head{
+            display: flex;
+            align-items: center;
+            margin-left: 20%;
+        }
+        .foot{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+        }
+        .ewm{
+            width:100px;
+            height: 100px
+        }
+        .btn{
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 20px;
+            background: #3aaffe;
+            color: whitesmoke;
+            position: absolute;
+            top: 2%;
+            right: 10%;
+            cursor: pointer;
+        }
+        .main{
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .img{
+            padding-left: 20px;
+            width: 120px;
+            height: 220px;
+        }
+        .txt{
+            position: absolute;
+            left: 5%;
+            bottom: 5%;
+            font-size: 30px;
+            color: whitesmoke;
+        }
+        .notice{
+            display: none;
+        }
+    }
+    @media screen and (max-width: 450px) {
+        body{
+            background-image: url("static/bg.jpg");
+            background-size: 100%;
+            background-repeat:repeat;
+        }
+        .logo{
+            width: 100%;
+            height: 100px;
+        }
+        .head{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+        .title{
+            float: left;
+            font-size: 30px;
+            color: dimgrey;
+        }
+        .ewm-title{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .foot{
+            position: fixed;
+            z-index: 100;
+            bottom: 10%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            bottom: 5%;
+            right: 5%;
+        }
+        .ewm{
+            width:100px;
+            height: 100px
+        }
+        .btn{
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 20px;
+            background: gold;
+            color: whitesmoke;
+            position: absolute;
+            top: 100px;
+            right: 10%;
+            cursor: pointer;
+        }
+        .main{
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .img{
+            width: 80%;
+            height: 100%;
+        }
+        .txt{
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
+        }
+        .notice{
+            display: block;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+
+</style>
+<body>
+    <div class="head">
+        <img class="logo" src="static/logo.png" />
+        <span class="title">泰会聊</span>
+    </div>
+    <div class="btn" onclick="to()">立即下载</div>
+    <div class="main">
+        <img class="img" src="static/one.jpg"/>
+        <span class="notice" style="color: gold;text-align: left">邮箱注册，期待你的加入</span>
+        <img class="img" src="static/two.jpg"/>
+        <span class="notice" style="color: forestgreen;text-align: left">实时交流，消息灵通</span>
+        <img class="img" src="static/three.jpg"/>
+        <span class="notice" style="color: mediumvioletred;text-align: right">分享心情，酸甜苦辣</span>
+    </div>
+    <div class="txt">
+        忙里偷闲，畅聊时刻
+    </div>
+    <div class="foot">
+        <img class="ewm" src="static/ewm.png" />
+        <span class="ewm-title">扫描二维码下载</span>
+    </div>
+</body>
+<script>
+    function to() {
+        location.href="http://81.69.59.18:3001/chatApp/__UNI__8275178_1116090308.apk"
+    }
+</script>
+</html>

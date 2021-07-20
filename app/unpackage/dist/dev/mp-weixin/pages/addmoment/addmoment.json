@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "g-upload": "/components/g-upload/g-upload"
+  }
+}

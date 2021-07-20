@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover, user-scalable=0">
+    <title>泰会聊，会聊的你</title>
+    <script src="static/better-scroll.js" type="text/javascript"></script>
+    <style>
+        @media screen and (min-width: 450px) {
+            .wrapper {
+                width: 100%;
+                overflow-x: hidden;
+                height: 100vh;
+                display: block;
+            }
+            .wrapper1{
+                display: none;
+            }
+            .parallax-img1,
+            .parallax-img2,
+            .parallax-img3,
+            .parallax-img4 {
+                position: relative;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .parallax-img1 {
+                height: 100%;
+                background-image: url("static/bg.jpg");
+            }
+
+            .parallax-img2 {
+                min-height: 400px;
+                background-image: url("static/Taebg.jpg");
+            }
+
+            .parallax-img3 {
+                min-height: 600px;
+                background-image: url("static/97.jpg");
+            }
+
+            .parallax-img4 {
+                height: 100%;
+                background-image: url("http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/181/10/thumb.jpg");
+            }
+
+            .caption {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .caption > span {
+                background: #ffffff;
+                color: #82fcfd;
+                padding: 18px 50px;
+                font-size: 30px;
+                border-radius: 16px;
+            }
+
+            .caption p {
+                margin: 0 0 15px 0;
+                padding: 0 0 15px 0;
+                border-bottom: 2px solid #82fcfd;
+            }
+
+            .caption > span p:first-of-type {
+                font-size: 18px;
+            }
+
+            /* 其他样式只为了更好看，不是必要的 */
+
+            body {
+                margin: 0;
+                background: #ffffff;
+            }
+
+            * {
+                font-family: Candara;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                color: #000000;
+                background: #ffffff;
+            }
+            .chat{
+                width: 50px;
+                height: 50px;
+                margin-top: 1%;
+                margin-left: 5%;
+            }
+            .content {
+                text-align: center;
+                width: 100%;
+                margin: 0 auto;
+                background: #ffffff;
+            }
+
+            p {
+                background: #ffffff;
+                margin: 15px;
+                font-size: 1.1rem;
+                color: #000000;
+            }
+            .btn{
+                width: 200px;
+                height: 70px;
+                text-align: center;
+                line-height: 70px;
+                border-radius: 20px;
+                background: #3aaffe;
+                color: whitesmoke;
+                position: absolute;
+                top: 2%;
+                right: 10%;
+                cursor: pointer;
+            }
+            .ewm-box{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                position: absolute;
+                bottom: 10%;
+                right: 5%;
+            }
+            .ewm{
+                width:150px;
+                height: 150px
+            }
+            .txt{
+                position: absolute;
+                left: 5%;
+                bottom: 5%;
+                font-size: 30px;
+                color: whitesmoke;
+            }
+            .moments-box{
+                width: 100%;
+                height: 300px;
+                position: relative;
+            }
+            .moments{
+                width: 400px;
+                height: 550px;
+                position: absolute;
+                bottom: 0;
+                left: 15%;
+                background-image: url("static/pic1.png") ;
+                background-size: 100% 100%;
+            }
+            .m-notice{
+                top: 20%;
+                width: 40%;
+                word-break: break-all;
+                position: absolute;
+                right: 5%;
+            }
+            .show-box{
+                width: 100%;
+                height: 300px;
+                position: relative;
+            }
+            .show1{
+                width: 200px;
+                height: 450px;
+                position: absolute;
+                bottom: -15%;
+                left: 5%;
+                background-image: url("static/tu1.png") ;
+                background-size: 100% 100%;
+            }
+            .show2{
+                width: 200px;
+                height: 450px;
+                position: absolute;
+                bottom: -15%;
+                left: 300px;
+                background-image: url("static/tu2.png") ;
+                background-size: 100% 100%;
+            }
+            .show-notice{
+                top: 10%;
+                width: 45%;
+                word-break: break-all;
+                position: absolute;
+                right: 1%;
+            }
+        }
+        @media screen and (max-width: 450px) {
+            body {
+                margin: 0;
+                background: #ffffff;
+            }
+            .wrap{
+                width: 100%;
+                height: 100vh;
+                position: absolute;
+                left: 0;
+                top: 0;
+                overflow: hidden;
+            }
+            .wrapper{
+                display: none;
+            }
+            .wrapper1 {
+                width: 100%;
+                overflow-x: hidden;
+                height: 100%;
+                display: block;
+            }
+            .bg{
+                background: url('static/bg.png') center 0 no-repeat;
+                background-size: cover;
+                height:100%
+                /* position: relative;
+                color:#ffffff ;
+                margin: 0;
+                height: 100vh;
+                overflow: hidden;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-align: center;
+                        align-items: center;
+                -webkit-box-pack: center;
+                        justify-content: center;
+                background: #1f1f1f; */
+            }
+            .bg2,.bg3,.bg4{
+                display: none;
+            }
+            .bg1:before{
+                content: ' ';
+                position: fixed;
+                z-index: -4;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: url('static/Taebg.jpg') center no-repeat;
+                background-size: cover;
+                height:100%
+            }
+            .bg2:before{
+                content: ' ';
+                position: fixed;
+                z-index: -4;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-size: cover;
+                background-image: url("static/t.jpg");
+                height:100%;
+            }
+            .bg3:before{
+                content: ' ';
+                position: fixed;
+                z-index: -4;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-image: url("static/unnamed.png");
+                background-size: cover;
+                height:100%;
+            }
+            .bg4:before{
+                content: ' ';
+                position: fixed;
+                z-index: -4;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-image: url("static/bg4.png");
+                background-size: cover;
+                height:100%;
+            }
+            .index{
+                width: 100%;
+                height: auto;
+            }
+            .btn{
+                width: 150px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+                border-radius: 20px;
+                background: #3aaffe;
+                color: whitesmoke;
+                position: absolute;
+                top: 40%;
+                left: 60%;
+                transform: translate(-50%,-50%);
+            }
+            .one{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            .one-span{
+                width: 80%;
+                text-align: center;
+                color: whitesmoke;
+                font-size: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .two{
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background: white;
+            }
+            .two-title{
+                font-size: 40px;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .two-span{
+                width: 80%;
+                text-align: center;
+                position: absolute;
+                color: silver;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .two-bg{
+                width: 90%;
+                height: 400px;
+                background-image: url("static/pic1.png");
+                background-size: 100% 100%;
+                position: absolute;
+                bottom: 0%;
+                left: 20%;
+            }
+            .three{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            .three-span{
+                width: 80%;
+                text-align: center;
+                color: whitesmoke;
+                font-size: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .four{
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background: white;
+                overflow: hidden;
+            }
+            .four-title{
+                font-size: 40px;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .four-span{
+                width: 80%;
+                text-align: center;
+                position: absolute;
+                color: silver;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .four-bg{
+                width: 80%;
+                height: 550px;
+                background-image: url("static/tu1.png");
+                background-size: 100% 100%;
+                position: absolute;
+                bottom:-10%;
+                left: 10%;
+            }
+            .five{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            .five-span{
+                width: 90%;
+                text-align: center;
+                color: whitesmoke;
+                font-size: 30px;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .seven{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            .seven-span{
+                width: 90%;
+                text-align: center;
+                color: whitesmoke;
+                font-size: 30px;
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .eight{
+                width: 100%;
+                height: 100%;
+                position: relative;
+                background: white;
+                overflow: hidden;
+            }
+            .eight-title{
+                font-size: 40px;
+                position: absolute;
+                top: 10%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .eight-span{
+                width: 80%;
+                text-align: center;
+                position: absolute;
+                color: silver;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .eight-bg{
+                width: 80%;
+                height: 550px;
+                background-image: url("static/tq.jpg");
+                background-size: 100% 100%;
+                position: absolute;
+                bottom:-10%;
+                left: 10%;
+            }
+            .six{
+                width: 100%;
+                height: 150px;
+                position: absolute;
+                bottom: 0;
+                background: black;
+            }
+            .six-btn{
+                margin-top: 20px;
+                margin-left: 15%;
+                width: 70%;
+                font-size: 20px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+                border-radius: 20px;
+                background: #13bbfa;
+                color: white;
+            }
+            .six>p{
+                color: white;
+                text-align: center;
+            }
+            .yaoqing{
+                top: 50%;
+                position: absolute;
+                animation: dongHua 6s 1 ease-in-out;
+                font-size: 25px;
+            }
+            @keyframes dongHua {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .logo{
+                animation: dongHua 6s 1 ease-in-out;
+                width: 120px;
+                height: 50px;
+                position: absolute;
+                top: 5%;
+                left: 5%;
+            }
+        }
+    </style>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<body>
+<div class="wrapper">
+    <div class="parallax-img1">
+            <div class="caption">
+            <span>
+            <img src="static/logo.png" alt="" height="120" width="300"/>
+            <p>泰会聊，学会聊天</p>
+            </span>
+            </div>
+            <div class="btn">
+                立即下载
+            </div>
+            <div class="ewm-box">
+                <img class="ewm" src="static/ewm.png"/>
+                <span>扫描二维码下载</span>
+            </div>
+            <div class="txt">
+                忙里偷闲，畅聊时刻
+            </div>
+    </div>
+    <div class="content">
+        <h1>每天和他人说说话</h1>
+        <img style="width: 100%" src="static/biaoyu.png" />
+    </div>
+
+    <div class="parallax-img2">
+    </div>
+
+    <div class="content">
+        <div class="moments-box">
+            <div class="moments"></div>
+            <div class="m-notice">
+                <h1>抒发情感，让大家看到更真实的你</h1>
+                <span style="color: silver">无论何时何地，一键分享，共同感受喜怒哀乐</span>
+            </div>
+        </div>
+    </div>
+    <div class="parallax-img3">
+        <div class="caption"><span>感受一下聊天的幸福感，填满时间</span></div>
+    </div>
+    <div class="content">
+        <div class="show-box">
+            <div class="show1"></div>
+            <div class="show2"></div>
+            <div class="show-notice">
+                <h1>沟通是友谊的桥梁，是和志同道合的他们放肆青春</h1>
+                <span style="color: silver">即使世界很大，你也不会孤独。哪里都有和你一样的人，等着你去发掘。</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="parallax-img4">
+        <div class="caption">
+            <span class="a">怎么样，赶紧扫描下载吧！城市就在你脚下</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper1">
+    <div class="bg1" id="bg1"></div>
+    <div class="bg2" id="bg2"></div>
+    <div class="bg3" id="bg3"></div>
+    <div class="bg4" id="bg4"></div>
+<div class="wrap">
+    <div class="index">
+        <div class="bg">
+            <img class="logo" src="static/logo.png" />
+            <canvas id="canvas"></canvas>
+            <div class="yaoqing">诚挚邀请你的加入</div>
+        </div>
+        <div class="one" id="one">
+            <span class="one-span">沟通是跨越千山万水的亲切声音</span>
+        </div>
+        <div class="two" id="two">
+            <div class="two-title">朋友圈</div>
+            <span class="two-span">一键分享，与朋友共同享受喜怒哀乐，尝尽人间酸甜苦辣</span>
+            <div class="two-bg"></div>
+        </div>
+        <div class="three" id="three">
+            <span class="three-span">即使的沟通能够避免误会，即使分享能感染快乐</span>
+        </div>
+        <div class="four" id="four">
+            <div class="four-title">添加好友</div>
+            <span class="four-span">查看好友，添加最适合的他/她</span>
+            <div class="four-bg"></div>
+        </div>
+        <div class="seven" id="seven">
+            <span class="seven-span">坚持签到，获取丰厚礼品</span>
+        </div>
+        <div class="eight" id="eight">
+            <div class="eight-title">实时天气</div>
+            <span class="eight-span">天气全知晓，穿衣不冻脚</span>
+            <div class="eight-bg"></div>
+        </div>
+        <div class="five" id="five">
+            <span class="five-span">怎么样，欢迎你的加入</span>
+            <div class="six">
+                <div class="six-btn" id="download">立即下载</div>
+                <p>Copyright@1997-2020</p>
+                <p>疼训公司 版权所有</p>
+            </div>
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+<script>
+
+// const palette = [
+//   '#21272f',
+//   '#ffbd36',
+//   '#ff2629',
+//   '#00abe5',
+// ]
+
+
+  
+// /*--------------------
+// Setup
+// --------------------*/
+// const canvas = document.getElementById('canvas')
+// const ctx = canvas.getContext('2d')
+// const win = {
+//   w: window.innerWidth,
+//   h: window.innerHeight
+// }
+// const mouse = {
+//   x: win.w / 2,
+//   y: win.h / 2,
+// }
+// let time = 0
+// let devicePixelRatio = window.devicePixelRatio || 1
+// const minArc = window.innerWidth > 500 ? 3 : 1
+
+// /*--------------------
+// Particle
+// --------------------*/
+// class Particle {
+//   constructor({x, y}) {
+//     this.x = x
+//     this.y = y
+//     this.alpha = 100
+//     this.arc = minArc + Math.random() * 3
+//     this.color = palette[Math.floor(Math.random() * palette.length)]
+//     this.arcX = minArc + Math.random() * 2
+//     this.arcY = minArc + Math.random() * 2
+//     this.offset = -2 + Math.random() * 4
+//   }
+//   draw(t) {
+//     ctx.fillStyle = this.color
+//     ctx.beginPath()
+//     ctx.arc(this.newX, this.newY, this.arc, 0, Math.PI * 2)
+//     ctx.closePath()
+//     ctx.fill()
+//     this.newX = this.x + this.arcX * Math.sin(t * this.offset)
+//     this.newY = this.y + this.arcY * Math.cos(t * this.offset)
+//   }
+// }
+
+// /*--------------------
+// Settings
+// --------------------*/
+// let Particles = []
+// const num = 30000
+// let i = 0
+
+// /*--------------------
+// Clear
+// --------------------*/
+// const clear = () => {
+//   ctx.clearRect(0, 0, win.w, win.h)
+// }
+
+// /*--------------------
+// Draw
+// --------------------*/
+// const draw = () => {
+//   const t = window.performance.now() * 0.001
+//   Particles.forEach((p, i) => {
+//      p.draw(t)
+//   })
+// }
+
+// /*--------------------
+// Animate
+// --------------------*/
+// const animate = () => {
+//   time += 0.1
+//   clear()
+//   draw()
+//   requestAnimationFrame(animate)
+// }
+
+// /*--------------------
+// Loop
+// --------------------*/
+// let n = 0
+// const loop = () => {
+//   for (let i = 0; i < num - 1; i++) {
+//     const x = Math.round(Math.random()*win.w)
+//     const y = Math.round(Math.random()*win.h)
+//     if (ctx.getImageData(x, y, 1, 1).data[3] == 255) {
+//       Particles.push(new Particle({x,y}))
+//       n++
+//     }
+//   }
+//   animate()
+//   gsap.from(Particles, {
+//     x: win.w / 2,
+//     duration: 1.6,
+//     ease: 'power3.inOut',
+//     stagger: -.001,
+//   })
+//   gsap.from(Particles, {
+//     y: - 10,
+//     a: 0,
+//     duration: 1.4,
+//     ease: 'power2.inOut',
+//     stagger: -.001,
+//   })
+//   gsap.to('.followers', {
+//     strokeDashoffset: '0px',
+//     ease: 'sine.out',
+//     duration: 5,
+//     delay: 2,
+//   })
+// }
+
+// /*--------------------
+// Init
+// --------------------*/
+// const init = () => {
+//   ctx.save()
+//   ctx.translate(win.w/2, win.h/3)
+//   ctx.fillStyle = 'black'
+//   ctx.textAlign = 'center'
+//   ctx.textBaseline = 'middle'
+//   ctx.font = `bold ${win.w*.30}px Arial, Helvetica, sans-serif`
+//   ctx.fillText('泰会聊', 0, 0)
+//   ctx.restore()
+//   ctx.scale(devicePixelRatio, devicePixelRatio)
+//   Particles = []
+//   loop()
+// } 
+// init()
+
+// /*--------------------
+// Resize
+// --------------------*/
+// const onResize = () => {
+//   devicePixelRatio = window.devicePixelRatio || 1
+//   win.w = window.innerWidth
+//   win.h = window.innerHeight
+//   canvas.width = win.w * devicePixelRatio
+//   canvas.height = win.h * devicePixelRatio
+//   canvas.style.width = `${win.w}px`
+//   canvas.style.height = `${win.h}px`
+//   init()
+// }
+// onResize()
+
+// /*--------------------
+// Listeners
+// --------------------*/
+// window.addEventListener('resize', onResize)
+
+
+
+
+window.onload=function(){
+        document.getElementsByClassName("bg")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("one")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("two")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("three")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("four")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("five")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("seven")[0].style.height=innerHeight+'px'
+        document.getElementsByClassName("eight")[0].style.height=innerHeight+'px'
+        setTimeout(()=>{
+            let wrapper = document.querySelector(".wrap")
+            var bs = BetterScroll.createBScroll (wrapper, {
+                probeType: 3,
+                click: true, //点击
+                tap:true,
+                scrollY:true,
+                bounce:false
+            })
+            bs.wrapperHeight=innerHeight
+            bs.scrollerHeight = (innerHeight*6)
+            bs.on('scroll', function (position) {
+                if(position.y)
+                if(position.y<=-(innerHeight)){
+                    document.getElementById("bg1").style.display="block"
+                    document.getElementById("bg2").style.display="none"
+                    document.getElementById("bg3").style.display="none"
+                    document.getElementById("bg4").style.display="none"
+                }
+               if(position.y<=-(innerHeight*1.95)){
+                   document.getElementById("bg1").style.display="none"
+                   document.getElementById("bg2").style.display="block"
+                   document.getElementById("bg3").style.display="none"
+                   document.getElementById("bg4").style.display="none"
+               }
+               if(position.y<=-(innerHeight*3.95)){
+                   document.getElementById("bg1").style.display="none"
+                   document.getElementById("bg2").style.display="none"
+                   document.getElementById("bg3").style.display="block"
+                   document.getElementById("bg4").style.display="none"
+               }
+                if(position.y<=-(innerHeight*5.95)){
+                    document.getElementById("bg1").style.display="none"
+                    document.getElementById("bg2").style.display="none"
+                    document.getElementById("bg3").style.display="none"
+                    document.getElementById("bg4").style.display="block"
+                }
+            })
+        })
+        document.getElementById("download").addEventListener("click",function () {
+            location.href="http://81.69.59.18:3001/chatApp/__UNI__8275178_1116090308.apk"
+        })
+    }
+</script>
+</html>

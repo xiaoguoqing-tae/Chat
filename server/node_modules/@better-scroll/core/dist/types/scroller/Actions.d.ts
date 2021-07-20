@@ -1,0 +1,31 @@
+import ActionsHandler from '../base/ActionsHandler';
+import { Behavior } from './Behavior';
+import DirectionLockAction from './DirectionLock';
+import { Animater } from '../animater';
+import { OptionsConstructor as BScrollOptions } from '../Options';
+import { TranslaterPoint } from '../translater';
+import { EventEmitter } from '@better-scroll/shared-utils';
+export default class ScrollerActions {
+    hooks: EventEmitter;
+    scrollBehaviorX: Behavior;
+    scrollBehaviorY: Behavior;
+    actionsHandler: ActionsHandler;
+    animater: Animater;
+    options: BScrollOptions;
+    directionLockAction: DirectionLockAction;
+    moved: boolean;
+    enabled: boolean;
+    startTime: number;
+    endTime: number;
+    constructor(scrollBehaviorX: Behavior, scrollBehaviorY: Behavior, actionsHandler: ActionsHandler, animater: Animater, options: BScrollOptions);
+    private bindActionsHandler;
+    private handleStart;
+    private handleMove;
+    private dispatchScroll;
+    private checkMomentum;
+    private handleEnd;
+    private handleClick;
+    getCurrentPos(): TranslaterPoint;
+    refresh(): void;
+    destroy(): void;
+}

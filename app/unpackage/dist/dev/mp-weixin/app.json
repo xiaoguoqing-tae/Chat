@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/register/register",
+    "pages/search/search",
+    "pages/chatman/chatman",
+    "pages/detail/detail",
+    "pages/groupdetail/groupdetail",
+    "pages/userhome/userhome",
+    "pages/creategroup/creategroup",
+    "pages/request/request",
+    "pages/chatroom/chatroom",
+    "pages/groupchat/groupchat",
+    "components/submit/submit",
+    "pages/moments/moments",
+    "pages/addmoment/addmoment",
+    "pages/group/group",
+    "pages/buildgroup/buildgroup",
+    "pages/groupapply/groupapply"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/msg.png",
+        "selectedIconPath": "static/msg1.png",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/group/group",
+        "iconPath": "static/groupicon.png",
+        "selectedIconPath": "static/groupicon1.png",
+        "text": "群聊"
+      },
+      {
+        "pagePath": "pages/moments/moments",
+        "iconPath": "static/friendq.png",
+        "selectedIconPath": "static/friendq1.png",
+        "text": "朋友圈"
+      },
+      {
+        "pagePath": "pages/detail/detail",
+        "iconPath": "static/mine.png",
+        "selectedIconPath": "static/mine1.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

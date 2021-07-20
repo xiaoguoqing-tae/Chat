@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "chat-submit": "/components/submit/submit"
+  }
+}
